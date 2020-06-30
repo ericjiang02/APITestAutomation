@@ -10,6 +10,7 @@ Scenario Outline: Calculation between two whole numbers via API
 	| <LeftNumber> | <Operator> | <RightNumber> |
 	When I press Calculate
 	Then I should see result <Result> returned
+	And I should receive response code OK
 	Examples: 
 	| LeftNumber | Operator | RightNumber | Result    |
 	| 0          | -        | 0           | 0         |
@@ -28,3 +29,20 @@ Scenario Outline: Calculation between two whole numbers via API
 	| 0          | /        | 0           | Undefined |
 	| 0          | /        | 1           | 0         |
 	| 1          | /        | 0           | Undefined |
+
+
+@NegativeTest
+Scenario Outline: Negative field validation tests
+	Given I enter leftNumber, operator and rightNumber on the calculator
+	| LeftNumber   | Operator   | RightNumber   |
+	| <LeftNumber> | <Operator> | <RightNumber> |
+	When I press Calculate
+	Then I should see result <Result> returned
+	And I should receive response code OK
+	Examples: 
+	| LeftNumber | Operator | RightNumber | Result    |
+	| 1.1        | +        | 2.2         | Undefined |
+	| aaa        | -        | bbb         | Undefined |
+	| @#$        | *        | (&^         | Undefined |
+	| 3          | &        | 5           | Undefined |
+	| -3         | +        | -7          | Undefined |

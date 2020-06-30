@@ -145,6 +145,76 @@ this.ScenarioInitialize(scenarioInfo);
 #line 12
  testRunner.Then(string.Format("I should see result {0} returned", result), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
+#line 13
+ testRunner.And("I should receive response code OK", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Negative field validation tests")]
+        [NUnit.Framework.CategoryAttribute("NegativeTest")]
+        [NUnit.Framework.TestCaseAttribute("1.1", "+", "2.2", "Undefined", null)]
+        [NUnit.Framework.TestCaseAttribute("aaa", "-", "bbb", "Undefined", null)]
+        [NUnit.Framework.TestCaseAttribute("@#$", "*", "(&^", "Undefined", null)]
+        [NUnit.Framework.TestCaseAttribute("3", "&", "5", "Undefined", null)]
+        [NUnit.Framework.TestCaseAttribute("-3", "+", "-7", "Undefined", null)]
+        public virtual void NegativeFieldValidationTests(string leftNumber, string @operator, string rightNumber, string result, string[] exampleTags)
+        {
+            string[] @__tags = new string[] {
+                    "NegativeTest"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("LeftNumber", leftNumber);
+            argumentsOfScenario.Add("Operator", @operator);
+            argumentsOfScenario.Add("RightNumber", rightNumber);
+            argumentsOfScenario.Add("Result", result);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Negative field validation tests", null, tagsOfScenario, argumentsOfScenario);
+#line 35
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+                TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                            "LeftNumber",
+                            "Operator",
+                            "RightNumber"});
+                table2.AddRow(new string[] {
+                            string.Format("{0}", leftNumber),
+                            string.Format("{0}", @operator),
+                            string.Format("{0}", rightNumber)});
+#line 36
+ testRunner.Given("I enter leftNumber, operator and rightNumber on the calculator", ((string)(null)), table2, "Given ");
+#line hidden
+#line 39
+ testRunner.When("I press Calculate", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 40
+ testRunner.Then(string.Format("I should see result {0} returned", result), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 41
+ testRunner.And("I should receive response code OK", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
             }
             this.ScenarioCleanup();
         }

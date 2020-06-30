@@ -57,13 +57,16 @@ namespace APITestAutomation.Steps
         [Then(@"I should see result (.*) returned")]
         public void ThenIShouldSeeResultReturnedOnTheScreen(int expectedResult)
         {
-            //HttpStatusCode status = HttpStatusCode.OK;
-            Assert.AreEqual(HttpStatusCode.OK, _settings.Response.StatusCode,
-                "Response code unexpected. " + "Actually: " + _settings.Response.StatusCode + " Expected: " +
-                HttpStatusCode.OK);
-
             int value = _settings.Response.GetResponseObject("value");
             Assert.AreEqual(expectedResult, value, "Calculator output is different from expected");
+        }
+
+        [Then(@"I should receive response code (\w+)")]
+        public void HttpStatusCodeIs(HttpStatusCode status)
+        {
+            Assert.AreEqual(status, _settings.Response.StatusCode,
+                "Response code unexpected. " + "Actually: " + _settings.Response.StatusCode + " Expected: " +
+                HttpStatusCode.OK);
         }
     }
 }
